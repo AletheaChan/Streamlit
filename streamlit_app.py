@@ -1,3 +1,3 @@
 import streamlit
 
-streamllit.title("First Commit")
+streamlit.title("First Commit")
