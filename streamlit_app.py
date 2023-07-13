@@ -21,7 +21,7 @@ with tab1:
         xgb_alethea = pickle.load(file)
 
   # Load the cleaned and transformed dataset
-  df = pd.read_csv('df_alethea1.csv')
+  df = pd.read_csv('df_alethea.csv')
   sales = df[['WEEKLY_SALES']] # Extract weekly sales, the target variable
 
   bn_mapping = { "Cheeky Greek": 0,
@@ -411,6 +411,12 @@ with tab1:
       locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
+
+  timeFrames = ['1 week', '2 weeks', '1 month', '2 months']
+  def get_PREDICTIONTF():
+    # Prediction Time Frame from latest week
+    timeFrame = st.selectbox('Select a time frame', timeFrames)
+    return timeFrame
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
