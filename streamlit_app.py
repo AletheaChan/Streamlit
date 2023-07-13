@@ -17,8 +17,6 @@ with tab1:
   st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
   st.write('Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.')
 
-  with open('xgb_alethea.pkl', 'rb') as file:
-    xgb_gs = pickle.load(file)
     
 # Load the cleaned and transformed dataset
   df = pd.read_csv('df_alethea1.csv')
