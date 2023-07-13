@@ -17,6 +17,10 @@ with tab1:
   st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
   st.write('Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.')
 
+  # Load the cleaned and transformed dataset
+  df = pd.read_csv('df_alethea1.csv')
+  sales = df[['WEEKLY_SALES']] # Extract weekly sales, the target variable
+
   bn_mapping = { "Cheeky Greek": 0,
                   "Guac n' Roll": 1,
                   "Smoky BBQ": 2,
@@ -36,20 +40,28 @@ with tab1:
   ct_mapping = { 'San Mateo': 0, 'Seattle': 1, 'New York City': 2, 'Boston': 3, 'Denver':4 }
 
   def get_brandName():
-      brandName = st.selectbox('Select a truck brand name', bn_mapping)
-      return brandName
+      TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
+      return TRUCK_BRAND_NAME
     
-  def get_city():
+  def get_city(TRUCK_BRAND_NAME):
       CITY = st.selectbox('Select a city', ct_mapping)
       return CITY
 
+  # def get_truckLocation(CITY):
+  #     # Only show truck locations of the selected city
+  #     LOCATION = df[df['CITY'] == bn_mapping[CITY]]['LOCATION'].unique()
+  #     LOCATION = st.selectbox('Select a truck location', tl_mapping)
+  #     return LOCATION  
+
   # Define the user input fields
   bn_input = get_brandName()
-  ct_input = get_city()
+  ct_input = get_city(TRUCK_BRAND_NAME)
+  # tl_input = get_truckLocation(CITY)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
+  # tl_int = tl_mapping[tl_input]
   
 
 with tab2:
