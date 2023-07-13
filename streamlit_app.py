@@ -39,8 +39,12 @@ with tab1:
                   "Amped Up Franks": 12,
                   "Freezing Point": 13,
                   "Revenge of the Curds": 14 }
+  bn_reverse_mapping = {v: k for k, v in bn_mapping.items()}
+  bn_labels = list(bn_mapping.keys())
 
   ct_mapping = { 'San Mateo': 0, 'Seattle': 1, 'New York City': 2, 'Boston': 3, 'Denver':4 }
+  ct_reverse_mapping = {v: k for k, v in ct_mapping.items()}
+  ct_labels = list(ct_mapping.keys())
 
   # tl_mapping = { {'Veterans Park': 0, 'City of New York': 1, 'Clason Point Park': 2, 'Stanley Bellevue Park': 3, "Hunt's Point Farmers Market": 4, 'Musee Fogg': 5,
   #                 'Rainey Park': 6, 'Tiffany Street Pier': 7, "Jeff Koons' Balloon Flower Sculpture at WTC": 8, 'Museum Of Modern Art': 9, 'Garland Street Park': 10,
@@ -203,12 +207,12 @@ with tab1:
   #                 'Massachusetts Division of Unemployment Assistance': 996, 'Coors Field': 997, 'Wildlife World Museum': 998, 'Halal Gyro Express': 999}
 
   def get_brandName():
-      TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
-      return TRUCK_BRAND_NAME
+      brand_name = st.selectbox('Select a truck brand name', bn_mapping)
+      return brand_name
     
-  def get_city(TRUCK_BRAND_NAME):
-      CITY = st.selectbox('Select a city', ct_mapping)
-      return CITY
+  def get_city(brand_name):
+      city = st.selectbox('Select a city', ct_mapping)
+      return city
 
   # def get_truckLocation(CITY):
   #     # Only show truck locations of the selected city
@@ -218,8 +222,8 @@ with tab1:
 
   # Define the user input fields
   bn_input = get_brandName()
-  ct_input = get_city(TRUCK_BRAND_NAME)
-  # tl_input = get_truckLocation(CITY)
+  ct_input = get_city(brand_name)
+  # tl_input = get_truckLocation(city)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
