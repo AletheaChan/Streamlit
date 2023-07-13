@@ -211,6 +211,7 @@ with tab1:
       return brand_name
     
   def get_city(brand_name):
+      cities = df[df['brand_name'] == bn_mapping[brand_name]]['city'].unique()
       city = st.selectbox('Select a city', ct_mapping)
       return city
 
