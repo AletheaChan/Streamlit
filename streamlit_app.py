@@ -216,13 +216,13 @@ with tab1:
   def get_CITY(TRUCK_BRAND_NAME):
     # Only show cities where the selected truck brand works
       cities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
-      CITY = st.selectbox('Select a city', cities)
+      CITY = st.selectbox('Select a city', ct_mapping)
       return CITY
 
   def get_LOCATION(CITY):
       # Only show truck locations of the selected city
       locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
-      LOCATION = st.selectbox('Select a truck location', locations)
+      LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
   # Define the user input fields
@@ -234,6 +234,10 @@ with tab1:
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
+
+  # if st.button('Predict Price'):
+  #   # Make the prediction  
+
   
 
 with tab2:
