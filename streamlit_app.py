@@ -5,7 +5,7 @@ import snowflake.connector
 from urllib.error import URLError
 
 
-tab1, tab2 = st.tabs(['Explore', 'Predict'])\
+tab1,tab2 = st.tabs(["tab1","tab2"])
 
 with tab1:
 # Define the app title and favicon
@@ -15,6 +15,11 @@ with tab1:
 
   with open('xgb_alethea.pkl', 'rb') as file:
     xgb_gs = pickle.load(file)
+    
+# Load the cleaned and transformed dataset
+    df = pd.read_csv('df_alethea1.csv')
+    sales = df[['WEEKLY_SALES']]
+    
   
 
 with tab2:
