@@ -206,6 +206,9 @@ with tab1:
                   'Cuny Hunter College': 990, 'Hot Soup Cart': 991, 'Central Park Rec Center': 992, 'City Hall Plaza': 993, 'Rink Grounds': 994, 'The Nature Conservancy': 995,
                   'Massachusetts Division of Unemployment Assistance': 996, 'Coors Field': 997, 'Wildlife World Museum': 998, 'Halal Gyro Express': 999}
 
+  tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
+  tl_labels = list(tl_mapping.keys())
+
   def get_TRUCK_BRAND_NAME():
       TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
       return TRUCK_BRAND_NAME
