@@ -409,13 +409,13 @@ with tab1:
   def get_LOCATION(CITY):
       # Only show truck locations of the selected city
       locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
-      LOCATION = st.selectbox('Select a truck location', tl_mapping)
+      LOCATION = st.selectbox('Select a truck location', locations)
       return LOCATION  
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY(bn_input)
-  tl_input = get_LOCATION(ct_input)
+  tl_input = get_LOCATION(ct_input, bn_input)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
