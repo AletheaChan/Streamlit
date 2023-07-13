@@ -21,8 +21,34 @@ with tab1:
     xgb_gs = pickle.load(file)
     
 # Load the cleaned and transformed dataset
-    df = pd.read_csv('df_alethea1.csv')
-    sales = df[['WEEKLY_SALES']]
+  df = pd.read_csv('df_alethea1.csv')
+  sales = df[['WEEKLY_SALES']]
+
+  bn_mapping = { "Cheeky Greek": 0,
+                  "Guac n' Roll": 1,
+                  "Smoky BBQ": 2,
+                  "Peking Truck": 3,
+                  "Tasty Tibs": 4,
+                  "Better Off Bread": 5,
+                  "The Mega Melt": 6,
+                  "Le Coin des Crêpes": 7,
+                  "The Mac Shack": 8,
+                  "Nani's Kitchen": 9,
+                  "Plant Palace": 10,
+                  "Kitakata Ramen Bar": 11,
+                  "Amped Up Franks": 12,
+                  "Freezing Point": 13,
+                  "Revenge of the Curds": 14 }
+
+  ct_mapping = {'San Mateo': 0, 'Seattle': 1, 'New York City': 2, 'Boston': 3, 'Denver':4}
+
+  def get_brandName():
+      brandName = st.selectbox('Select a truck brand name', bn_mapping)
+      return brandName
+    
+  def get_city():
+      CITY = st.selectbox('Select a city', ct_mapping)
+      return CITY
     
   
 
