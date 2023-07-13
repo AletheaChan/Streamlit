@@ -218,7 +218,7 @@ with tab1:
 
   def get_LOCATION(CITY):
       # Only show truck locations of the selected city
-      LOCATION = df[df['CITY'] == bn_mapping[CITY]]['LOCATION'].unique()
+      LOCATION = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
