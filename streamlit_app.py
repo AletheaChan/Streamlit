@@ -46,7 +46,7 @@ with tab1:
   ct_reverse_mapping = {v: k for k, v in ct_mapping.items()}
   ct_labels = list(ct_mapping.keys())
 
-  tl_mapping = { {'Veterans Park': 0, 'City of New York': 1, 'Clason Point Park': 2, 'Stanley Bellevue Park': 3, "Hunt's Point Farmers Market": 4, 'Musee Fogg': 5,
+  tl_mapping = { 'Veterans Park': 0, 'City of New York': 1, 'Clason Point Park': 2, 'Stanley Bellevue Park': 3, "Hunt's Point Farmers Market": 4, 'Musee Fogg': 5,
                   'Rainey Park': 6, 'Tiffany Street Pier': 7, "Jeff Koons' Balloon Flower Sculpture at WTC": 8, 'Museum Of Modern Art': 9, 'Garland Street Park': 10,
                   'Crestmoor Park': 11, 'Johnson Habitat Park': 12, 'Westcrest Park': 13, 'Fremont Peak Park': 14, 'Christodora House': 15, 'ArchCare at Mary Manning Walsh Home': 16,
                   'West Magnolia Playfield': 17, 'All About Seniors': 18, 'Southwest Auto Park': 19, 'Haven of Care Assisted Living': 20, 'Ellis': 21, 'Garland David T Park': 22,
@@ -204,7 +204,7 @@ with tab1:
                   'Tat Wong Kung Fu Academy': 975, 'Viking Pavers Construction': 976, 'Belle Isle Coastal Preserve': 977, 'MacKenzie House': 978, 'Sunken Gardens Park': 979, 'Gust': 980, 'Rowe Street Woods': 981,
                   'Park Hill': 982, 'Montclair': 983, 'Cesare Olive Oil & Vinegars': 984, 'Kerry Park': 985, 'Always Perfect Yacht Interiors': 986, 'Golden Way Market': 987, 'Cutillo Park': 988, 'Adams Park': 989,
                   'Cuny Hunter College': 990, 'Hot Soup Cart': 991, 'Central Park Rec Center': 992, 'City Hall Plaza': 993, 'Rink Grounds': 994, 'The Nature Conservancy': 995,
-                  'Massachusetts Division of Unemployment Assistance': 996, 'Coors Field': 997, 'Wildlife World Museum': 998, 'Halal Gyro Express': 999}
+                  'Massachusetts Division of Unemployment Assistance': 996, 'Coors Field': 997, 'Wildlife World Museum': 998, 'Halal Gyro Express': 999 }
 
   tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
   tl_labels = list(tl_mapping.keys())
