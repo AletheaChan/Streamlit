@@ -47,7 +47,14 @@ with tab1:
   def get_city():
       CITY = st.selectbox('Select a city', ct_mapping)
       return CITY
-    
+
+  # Define the user input fields
+  bn_input = get_brandName()
+  ct_input = get_city()
+  
+  # Map user inputs to integer encoding
+  bn_int = dowMapping[bn_input]
+  ct_int = mt_mapping[ct_input]
   
 
 with tab2:
