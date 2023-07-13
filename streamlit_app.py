@@ -206,14 +206,14 @@ with tab1:
   #                 'Cuny Hunter College': 990, 'Hot Soup Cart': 991, 'Central Park Rec Center': 992, 'City Hall Plaza': 993, 'Rink Grounds': 994, 'The Nature Conservancy': 995,
   #                 'Massachusetts Division of Unemployment Assistance': 996, 'Coors Field': 997, 'Wildlife World Museum': 998, 'Halal Gyro Express': 999}
 
-  def get_brandName():
-      brand_name = st.selectbox('Select a truck brand name', bn_mapping)
-      return brand_name
+  def get_TRUCK_BRAND_NAME():
+      TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
+      return TRUCK_BRAND_NAME
     
-  def get_city(brand_name):
-      cities = df[df['brand_name'] == bn_mapping[brand_name]]['city'].unique()
-      city = st.selectbox('Select a city', ct_mapping)
-      return city
+  def get_CITY(TRUCK_BRAND_NAME):
+      cities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
+      CITY = st.selectbox('Select a city', ct_mapping)
+      return CITY
 
   # def get_truckLocation(CITY):
   #     # Only show truck locations of the selected city
@@ -222,8 +222,8 @@ with tab1:
   #     return LOCATION  
 
   # Define the user input fields
-  bn_input = get_brandName()
-  ct_input = get_city(bn_input)
+  bn_input = get_TRUCK_BRAND_NAME()
+  ct_input = get_CITY(bn_input)
   # tl_input = get_truckLocation(ct_input)
   
   # Map user inputs to integer encoding
