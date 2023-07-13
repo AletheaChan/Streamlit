@@ -406,35 +406,38 @@ with tab1:
       CITY = st.selectbox('Select a city', cities)
       return CITY
 
-  def get_LOCATION(CITY, TRUCK_BRAND_NAME):
-    # Check if the selected city is in the ct_mapping dictionary
-    if CITY in ct_mapping:
-        # Only show truck locations of the selected city and truck brand
-        locations = df[(df['CITY'] == ct_mapping[CITY]) & (df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME])]['LOCATION'].unique()
-        LOCATION = st.selectbox('Select a truck location', locations)
-        return LOCATION
-    else:
-        st.error('Invalid city selection')
-        return None
-
-  # def get_LOCATION(CITY):
-  #     # Only show truck locations of the selected city
-  #     locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
-  #     LOCATION = st.selectbox('Select a truck location', locations)
-  #     return LOCATION  
+  def get_LOCATION(CITY):
+      # Only show truck locations of the selected city
+      locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
+      LOCATION = st.selectbox('Select a truck location', locations)
+      return LOCATION  
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY(bn_input)
-  tl_input = get_LOCATION(ct_input, bn_input)
+  tl_input = get_LOCATION(ct_input)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  # if st.button('Predict Price'):
-  #   # Make the prediction  
+  if st.button('Predict Price'):
+    # Make the prediction  
+    input_data = [[bn_int,ct_int,tl_int]]
+    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
+    prediction = xgb_alethea.predict(input_df)   
+    # convert output data and columns, including price, to a dataframe avoiding TypeError: type numpy.ndarray doesn't define round method
+    output_data = [TRUCK_BRAND_NAME, CITY, LOCATION, prediction[0]]
+    
+    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'predicted_quantity'])
+    # Make the prediction   
+    # Show prediction on weekly sales in dollars using the price columns
+    input_data = [[bn_int, ct_int, tl_int]]
+
+    predicted_price = xgb_alethea.predict(input_df)[0]
+    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_quantity))
+    st.dataframe(output_df)
 
   
 
