@@ -17,11 +17,6 @@ with tab1:
   st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
   st.write('Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.')
 
-    
-# Load the cleaned and transformed dataset
-  df = pd.read_csv('df_alethea1.csv')
-  sales = df[['WEEKLY_SALES']]
-
   bn_mapping = { "Cheeky Greek": 0,
                   "Guac n' Roll": 1,
                   "Smoky BBQ": 2,
