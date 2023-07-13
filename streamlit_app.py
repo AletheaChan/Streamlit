@@ -228,7 +228,7 @@ with tab1:
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY(bn_input)
-  tl_input = get_truckLocation(ct_input)
+  tl_input = get_LOCATION(ct_input)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
