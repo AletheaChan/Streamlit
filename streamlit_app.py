@@ -406,16 +406,27 @@ with tab1:
       CITY = st.selectbox('Select a city', cities)
       return CITY
 
-  def get_LOCATION(CITY):
-      # Only show truck locations of the selected city
-      locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
-      LOCATION = st.selectbox('Select a truck location', locations)
-      return LOCATION  
+  def get_LOCATION(CITY, TRUCK_BRAND_NAME):
+    # Check if the selected city is in the ct_mapping dictionary
+    if CITY in ct_mapping:
+        # Only show truck locations of the selected city and truck brand
+        locations = df[(df['CITY'] == ct_mapping[CITY]) & (df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME])]['LOCATION'].unique()
+        LOCATION = st.selectbox('Select a truck location', locations)
+        return LOCATION
+    else:
+        st.error('Invalid city selection')
+        return None
+
+  # def get_LOCATION(CITY):
+  #     # Only show truck locations of the selected city
+  #     locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
+  #     LOCATION = st.selectbox('Select a truck location', locations)
+  #     return LOCATION  
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY(bn_input)
-  tl_input = get_LOCATION(ct_input)
+  tl_input = get_LOCATION(ct_input, bn_input)
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
