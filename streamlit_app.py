@@ -401,9 +401,9 @@ with tab1:
       return TRUCK_BRAND_NAME
     
   def get_CITY(TRUCK_BRAND_NAME):
-    # Only show cities where the selected truck brand works
+    # Only show cities where the selected truck brand workscities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
       cities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
-      CITY = st.selectbox('Select a city', ct_mapping)
+      CITY = st.selectbox('Select a city', cities)
       return CITY
 
   def get_LOCATION(CITY):
