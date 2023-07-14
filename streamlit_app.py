@@ -428,22 +428,24 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  if st.button('Predict Price'):
+  if st.button('Predict Profits'):
     # Make the prediction  
     input_data = [[bn_int,ct_int,tl_int]]
     input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
     prediction = xgb_alethea.predict(input_df)   
-    # convert output data and columns, including price, to a dataframe avoiding TypeError: type numpy.ndarray doesn't define round method
-    output_data = [TRUCK_BRAND_NAME, CITY, LOCATION, prediction[0]]
     
-    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'predicted_quantity'])
-    # Make the prediction   
-    # Show prediction on weekly sales in dollars using the price columns
-    input_data = [[bn_int, ct_int, tl_int]]
+    # Convert output data and columns, including profit, to a dataframe
+    output_data = [bn_int, ct_int, tl_int, prediction[0]]
+    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_PROFIT'])
 
-    predicted_price = xgb_alethea.predict(input_df)[0]
-    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_quantity))
+    # # Show prediction on weekly sales in dollars using the price columns
+    # input_data = [[bn_int, ct_int, tl_int]]
+
+    # predicted_price = xgb_alethea.predict(input_df)[0]
+    predicted_profit = output_df['PREDICTED_PROFIT'].iloc[0]
+    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_profit))
     st.dataframe(output_df)
+
 
   
 
