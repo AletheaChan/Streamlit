@@ -396,6 +396,10 @@ with tab1:
   tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
   tl_labels = list(tl_mapping.keys())
 
+  tf_mapping = { '1 Week': 0, '2 Weeks': 1, '1 Month': 2, '2 Months': 3, '1 Year':4 }
+  tf_reverse_mapping = {v: k for k, v in tf_mapping.items()}
+  tf_labels = list(tf_mapping.keys())
+
   def get_TRUCK_BRAND_NAME():
       TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
       return TRUCK_BRAND_NAME
@@ -412,21 +416,22 @@ with tab1:
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
-  timeFrames = ['1 week', '2 weeks', '1 month', '2 months']
   def get_PREDICTIONTF():
-    # Prediction Time Frame from latest week
-    timeFrame = st.selectbox('Select a time frame', timeFrames)
+    # Prediction Time Frame from the latest week
+    timeFrame = st.selectbox('Select a time frame', tf_mapping)
     return timeFrame
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY(bn_input)
   tl_input = get_LOCATION(ct_input)
+  tf_input = get_PREDICTIONTF()
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
+  tf_int = tf_mapping[tf_input]
 
   if st.button('Predict Profits'):
     # Make the prediction  
@@ -436,14 +441,14 @@ with tab1:
     
     # Convert output data and columns, including profit, to a dataframe
     output_data = [bn_int, ct_int, tl_int, prediction[0]]
-    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_PROFIT'])
+    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
 
     # # Show prediction on weekly sales in dollars using the price columns
     # input_data = [[bn_int, ct_int, tl_int]]
 
     # predicted_price = xgb_alethea.predict(input_df)[0]
-    predicted_profit = output_df['PREDICTED_PROFIT'].iloc[0]
-    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_profit))
+    predicted_sales = output_df['PREDICTED_SALES'].iloc[0]
+    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_sales))
     st.dataframe(output_df)
 
 
