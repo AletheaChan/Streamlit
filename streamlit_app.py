@@ -396,7 +396,7 @@ with tab1:
   tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
   tl_labels = list(tl_mapping.keys())
 
-  tf_mapping = { '1 Week': 0, '2 Weeks': 1, '1 Month': 2, '2 Months': 3, '1 Year':4 }
+  tf_mapping = { '1 Week': 0, '2 Weeks': 1, '1 Month': 2, '2 Months': 3, '1 Year': 4, 'Week 100': 5 }
   tf_reverse_mapping = {v: k for k, v in tf_mapping.items()}
   tf_labels = list(tf_mapping.keys())
 
@@ -404,15 +404,11 @@ with tab1:
       TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
       return TRUCK_BRAND_NAME
     
-  def get_CITY(TRUCK_BRAND_NAME):
-    # Only show cities where the selected truck brand workscities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
-      cities = df[df['TRUCK_BRAND_NAME'] == bn_mapping[TRUCK_BRAND_NAME]]['CITY'].unique()
+  def get_CITY():
       CITY = st.selectbox('Select a city', ct_mapping)
       return CITY
 
-  def get_LOCATION(CITY):
-      # Only show truck locations of the selected city
-      locations = df[df['CITY'] == ct_mapping[CITY]]['LOCATION'].unique()
+  def get_LOCATION():
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
@@ -423,8 +419,8 @@ with tab1:
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
-  ct_input = get_CITY(bn_input)
-  tl_input = get_LOCATION(ct_input)
+  ct_input = get_CITY()
+  tl_input = get_LOCATION()
   tf_input = get_PREDICTIONTF()
   
   # Map user inputs to integer encoding
@@ -435,16 +431,16 @@ with tab1:
 
   if st.button('Predict Profits'):
     # Make the prediction  
-    input_data = [[bn_int,ct_int,tl_int]]
-    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
+    input_data = [[bn_int,bct_int, tl_int, tf_int]]
+    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'WEEK'])
     prediction = xgb_alethea.predict(input_df)   
     
     # Convert output data and columns, including profit, to a dataframe
-    output_data = [bn_int, ct_int, tl_int, prediction[0]]
-    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
+    output_data = [bn_int, ct_int, tl_int, tf_int, prediction[0]]
+    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'WEEK', 'PREDICTED_SALES'])
 
     # # Show prediction on weekly sales in dollars using the price columns
-    # input_data = [[bn_int, ct_int, tl_int]]
+    # input_data = [[bn_int, ct_int, tl_int, tf_int]]
 
     # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['PREDICTED_SALES'].iloc[0]
