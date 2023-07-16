@@ -401,10 +401,7 @@ with tab1:
 
   tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
   tl_labels = list(tl_mapping.keys())
-
-  tf_mapping = { '1 Week': 0, '2 Weeks': 1, '1 Month': 2, '2 Months': 3, '1 Year': 4, 'Week 100': 5 }
-  tf_reverse_mapping = {v: k for k, v in tf_mapping.items()}
-  tf_labels = list(tf_mapping.keys())
+  
 
   def get_DAYOFWEEK():
     DAY_OF_WEEK = st.selectbox('Select a day of week', wd_mapping)
