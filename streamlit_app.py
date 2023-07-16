@@ -440,15 +440,11 @@ with tab1:
     
     # Convert output data and columns, including profit, to a dataframe
     output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
-    output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
-
-    # # Show prediction on weekly sales in dollars using the price columns
-    # input_data = [[wd_int, bn_int, ct_int, tl_int]]
+    output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
 
     # predicted_price = xgb_alethea.predict(input_df)[0]
-    predicted_sales = output_df['PREDICTED_SALES'].iloc[0]
-    st.write('The predicted weekly sales is {:.2f}.'.format(predicted_sales))
-    st.dataframe(output_df)
+    predicted_sales = output_df['DAILY_SALES'].iloc[0]
+    st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
 
   
