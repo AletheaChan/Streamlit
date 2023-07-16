@@ -412,35 +412,35 @@ with tab1:
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
-  def get_PREDICTIONTF():
-    # Prediction Time Frame from the latest week
-    timeFrame = st.selectbox('Select a time frame', tf_mapping)
-    return timeFrame
+  # def get_PREDICTIONTF():
+  #   # Prediction Time Frame from the latest week
+  #   timeFrame = st.selectbox('Select a time frame', tf_mapping)
+  #   return timeFrame
 
   # Define the user input fields
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY()
   tl_input = get_LOCATION()
-  tf_input = get_PREDICTIONTF()
+  # tf_input = get_PREDICTIONTF()
   
   # Map user inputs to integer encoding
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
-  tf_int = tf_mapping[tf_input]
+  # tf_int = tf_mapping[tf_input]
 
   if st.button('Predict Profits'):
     # Make the prediction  
-    input_data = [[bn_int,bct_int, tl_int, tf_int]]
-    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'WEEK'])
+    input_data = [[bn_int,bct_int, tl_int]]
+    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
     prediction = xgb_alethea.predict(input_df)   
     
     # Convert output data and columns, including profit, to a dataframe
     output_data = [bn_int, ct_int, tl_int, tf_int, prediction[0]]
-    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'WEEK', 'PREDICTED_SALES'])
+    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
 
     # # Show prediction on weekly sales in dollars using the price columns
-    # input_data = [[bn_int, ct_int, tl_int, tf_int]]
+    # input_data = [[bn_int, ct_int, tl_int]]
 
     # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['PREDICTED_SALES'].iloc[0]
