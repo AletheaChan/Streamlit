@@ -12,6 +12,8 @@ from urllib.error import URLError
 tab1,tab2 = st.tabs(["tab1","tab2"])
 
 with tab1:
+  import xgboost as xgb
+  
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations?')
   st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
