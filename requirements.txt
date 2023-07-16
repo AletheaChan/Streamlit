@@ -1,2 +1,3 @@
 snowflake-connector-python
 xgboost
+scikit-learn
