@@ -21,8 +21,12 @@ with tab1:
         xgb_alethea = pickle.load(file)
 
   # Load the cleaned and transformed dataset
-  df = pd.read_csv('df_alethea.csv')
+  df = pd.read_csv('df_aletheaDOW.csv')
   sales = df[['WEEKLY_SALES']] # Extract weekly sales, the target variable
+
+  wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
+  wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
+  wd_labels = [wd_reverse_mapping[i] for i in sorted(wd_reverse_mapping.keys())]
 
   bn_mapping = { "Cheeky Greek": 0,
                   "Guac n' Roll": 1,
@@ -400,6 +404,10 @@ with tab1:
   tf_reverse_mapping = {v: k for k, v in tf_mapping.items()}
   tf_labels = list(tf_mapping.keys())
 
+  def get_DAYOFWEEK():
+    DAY_OF_WEEK = st.selectbox('Select a day of week', wd_mapping)
+    return DAY_OF_WEEK
+
   def get_TRUCK_BRAND_NAME():
       TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
       return TRUCK_BRAND_NAME
@@ -412,35 +420,30 @@ with tab1:
       LOCATION = st.selectbox('Select a truck location', tl_mapping)
       return LOCATION  
 
-  # def get_PREDICTIONTF():
-  #   # Prediction Time Frame from the latest week
-  #   timeFrame = st.selectbox('Select a time frame', tf_mapping)
-  #   return timeFrame
-
   # Define the user input fields
+  wd_input = get_DAYOFWEEK()
   bn_input = get_TRUCK_BRAND_NAME()
   ct_input = get_CITY()
   tl_input = get_LOCATION()
-  # tf_input = get_PREDICTIONTF()
   
   # Map user inputs to integer encoding
+  wd_int = wd_mapping[wd_input]
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
-  # tf_int = tf_mapping[tf_input]
 
   if st.button('Predict Profits'):
     # Make the prediction  
-    input_data = [[bn_int, ct_int, tl_int]]
-    input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
+    input_data = [[wd_int, bn_int, ct_int, tl_int]]
+    input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
     prediction = xgb_alethea.predict(input_df)   
     
     # Convert output data and columns, including profit, to a dataframe
-    output_data = [bn_int, ct_int, tl_int, prediction[0]]
-    output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
+    output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
+    output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'PREDICTED_SALES'])
 
     # # Show prediction on weekly sales in dollars using the price columns
-    # input_data = [[bn_int, ct_int, tl_int]]
+    # input_data = [[wd_int, bn_int, ct_int, tl_int]]
 
     # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['PREDICTED_SALES'].iloc[0]
