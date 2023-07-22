@@ -6,6 +6,7 @@ import snowflake.connector
 import pydeck as pdk
 import pickle
 import requests
+import shap
 from urllib.error import URLError
 
 
@@ -13,7 +14,6 @@ tab1,tab2 = st.tabs(["tab1","tab2"])
 
 with tab1:
   import xgboost as xgb
-  import shap
   
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations?')
