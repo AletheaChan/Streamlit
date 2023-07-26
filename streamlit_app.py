@@ -6,7 +6,7 @@ import snowflake.connector
 import pydeck as pdk
 import pickle
 import requests
-import shap
+# import shap
 from urllib.error import URLError
 
 
@@ -25,8 +25,8 @@ with tab1:
 
   # Load the cleaned and transformed dataset
   df = pd.read_csv('df_aletheaDOW.csv')
-  sales = df[['DAILY_SALES']] # Extract weekly sales, the target variable
-  explainer = shap.Explainer(xgb_alethea)
+  # sales = df[['DAILY_SALES']] # Extract weekly sales, the target variable
+  # explainer = shap.Explainer(xgb_alethea)
 
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
   wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
@@ -435,8 +435,8 @@ with tab1:
 
   def calculate_shap_values(input_data):
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
-    shap_values = explainer(input_df)
-    shap_df = pd.DataFrame(shap_values.values, columns=input_df.columns)
+    # shap_values = explainer(input_df)
+    # shap_df = pd.DataFrame(shap_values.values, columns=input_df.columns)
     return pd.concat([input_df, shap_df], axis=1)
     
   if st.button('Predict Profits'):
@@ -453,12 +453,12 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
     
-    # Calculate and display feature contributions
-    shap_values_df = calculate_shap_values(input_data)
-    st.write('Feature Contributions:')
-    st.write(shap_values_df)
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.pyplot(shap.summary_plot(shap_values_df.drop('DAILY_SALES', axis=1)))
+    # # Calculate and display feature contributions
+    # shap_values_df = calculate_shap_values(input_data)
+    # st.write('Feature Contributions:')
+    # st.write(shap_values_df)
+    # st.set_option('deprecation.showPyplotGlobalUse', False)
+    # st.pyplot(shap.summary_plot(shap_values_df.drop('DAILY_SALES', axis=1)))
 
 
   
