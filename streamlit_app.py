@@ -457,7 +457,7 @@ with tab1:
   et_int = et_mapping[et_input]
   
   if st.button('Predict Profits'):
-    st.write('Im gna make this shit'))
+    st.write('Im gna make this shit')
 
   
 
