@@ -452,9 +452,7 @@ with tab1:
       TRUCKS = st.slider('Number of additional trucks', 0, 10, 0)
       st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
       return TRUCKS  
-
   et_input = get_Extra()
-  et_int = et_mapping[et_input]
   
   if st.button('Predict Profits'):
     st.write('Im gna make this shit')
