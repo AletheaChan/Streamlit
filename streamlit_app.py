@@ -6,7 +6,7 @@ import snowflake.connector
 import pydeck as pdk
 import pickle
 import requests
-from lime import lime_tabular
+# from lime import lime_tabular
 from urllib.error import URLError
 
 
