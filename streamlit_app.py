@@ -448,7 +448,7 @@ with tab1:
     result_2_placeholder = st.empty()
 
     # Button to produce Result 1
-      if st.button("Button 1"):
+    if st.button("Button 1"):
       # Make the prediction  
       input_data = [[wd_int, bn_int, ct_int, tl_int]]
       input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
