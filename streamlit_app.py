@@ -6,7 +6,7 @@ import snowflake.connector
 import pydeck as pdk
 import pickle
 import requests
-# import shap
+from lime import lime_tabular
 from urllib.error import URLError
 
 
@@ -26,7 +26,6 @@ with tab1:
   # Load the cleaned and transformed dataset
   df = pd.read_csv('df_aletheaDOW.csv')
   # sales = df[['DAILY_SALES']] # Extract weekly sales, the target variable
-  # explainer = shap.Explainer(xgb_alethea)
 
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
   wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
@@ -432,12 +431,6 @@ with tab1:
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
-
-  def calculate_shap_values(input_data):
-    input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
-    # shap_values = explainer(input_df)
-    # shap_df = pd.DataFrame(shap_values.values, columns=input_df.columns)
-    return pd.concat([input_df, shap_df], axis=1)
     
   if st.button('Predict Profits'):
     # Make the prediction  
@@ -452,14 +445,19 @@ with tab1:
     # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
-    
-    # # Calculate and display feature contributions
-    # shap_values_df = calculate_shap_values(input_data)
-    # st.write('Feature Contributions:')
-    # st.write(shap_values_df)
-    # st.set_option('deprecation.showPyplotGlobalUse', False)
-    # st.pyplot(shap.summary_plot(shap_values_df.drop('DAILY_SALES', axis=1)))
 
+  
+  # Viewing predicted daily sales if more trucks were added
+  def get_Extra():
+      TRUCKS = st.slider('Number of additional trucks', 0, 10, 0)
+      st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
+      return TRUCKS  
+
+  et_input = get_Extra()
+  et_int = et_mapping[et_input]
+  
+  if st.button('Predict Profits'):
+    st.write('Im gna make this shit'))
 
   
 
