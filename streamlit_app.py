@@ -8,7 +8,7 @@ import pickle
 import requests
 # from lime import lime_tabular
 from urllib.error import URLError
-from streamlit import caching
+# from streamlit import caching
 
 
 tab1,tab2 = st.tabs(["tab1","tab2"])
@@ -16,12 +16,12 @@ tab1,tab2 = st.tabs(["tab1","tab2"])
 with tab1:
   import xgboost as xgb
   
-  class SessionState:
-    def __init__(self):
-        self.result_one = None
-        self.result_two = None
+  # class SessionState:
+  #   def __init__(self):
+  #       self.result_one = None
+  #       self.result_two = None
 
-  session_state = SessionState()
+  # session_state = SessionState()
   
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations?')
