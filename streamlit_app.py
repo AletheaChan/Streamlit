@@ -431,7 +431,16 @@ with tab1:
   bn_int = bn_mapping[bn_input]
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
-  
+
+
+from streamlit import caching
+class SessionState:
+    def __init__(self):
+        self.result_one = None
+        self.result_two = None
+
+session_state = SessionState()
+
   @st.cache_data
   def button_one_computation():
     # Make the prediction  
@@ -449,7 +458,7 @@ with tab1:
     pass
     
   if st.button('Predict Daily Sales'):
-    button_one_computation()
+    session_state.result_one = button_one_computation()
 
   
   # Viewing predicted daily sales if more trucks were added
@@ -465,7 +474,7 @@ with tab1:
     pass
   
   if st.button('Predict Daily Sales with the Additional Trucks'):
-    button_two_computation()
+    session_state.result_two = button_two_computation()
 
   
 
