@@ -433,13 +433,13 @@ with tab1:
   tl_int = tl_mapping[tl_input]
 
 
-from streamlit import caching
-class SessionState:
+  from streamlit import caching
+  class SessionState:
     def __init__(self):
         self.result_one = None
         self.result_two = None
 
-session_state = SessionState()
+  session_state = SessionState()
 
   @st.cache_data
   def button_one_computation():
