@@ -440,54 +440,24 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  def main():
-    st.title("Multiple Button Outputs")
+  @st.cache_data
+  def button_one_computation():
+    # Make the prediction  
+    input_data = [[wd_int, bn_int, ct_int, tl_int]]
+    input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
+    prediction = xgb_alethea.predict(input_df)   
     
-    # Create an empty placeholder for each result
-    result_1_placeholder = st.empty()
-    result_2_placeholder = st.empty()
+    # Convert output data and columns, including profit, to a dataframe
+    output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
+    output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
 
-    # Button to produce Result 1
-    if st.button("Button 1"):
-      # Make the prediction  
-      input_data = [[wd_int, bn_int, ct_int, tl_int]]
-      input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
-      prediction = xgb_alethea.predict(input_df)   
-      
-      # Convert output data and columns, including profit, to a dataframe
-      output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
-      output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
-  
-      # predicted_price = xgb_alethea.predict(input_df)[0]
-      predicted_sales = output_df['DAILY_SALES'].iloc[0]
-      st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
-      result_1_placeholder.success(predicted_sales)
-
-    # Button to produce Result 2
-    if st.button("Button 2"):
-        result_2 = "This is Result 2"
-        result_2_placeholder.success(result_2)
-
-  main()
-
-  # @st.cache_data
-  # def button_one_computation():
-  #   # Make the prediction  
-  #   input_data = [[wd_int, bn_int, ct_int, tl_int]]
-  #   input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
-  #   prediction = xgb_alethea.predict(input_df)   
+    # predicted_price = xgb_alethea.predict(input_df)[0]
+    predicted_sales = output_df['DAILY_SALES'].iloc[0]
+    st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
+    pass
     
-  #   # Convert output data and columns, including profit, to a dataframe
-  #   output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
-  #   output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
-
-  #   # predicted_price = xgb_alethea.predict(input_df)[0]
-  #   predicted_sales = output_df['DAILY_SALES'].iloc[0]
-  #   st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
-  #   pass
-    
-  # if st.button('Predict Daily Sales'):
-  #   session_state.result_one = button_one_computation()
+  if st.button('Predict Daily Sales'):
+    session_state.result_one = button_one_computation()
 
   
   # Viewing predicted daily sales if more trucks were added
@@ -497,13 +467,13 @@ with tab1:
       return TRUCKS  
   et_input = get_Extra()
 
-  # @st.cache_data
-  # def button_two_computation():
-  #   st.write('Im gna make this shit')
-  #   pass
+  @st.cache_data
+  def button_two_computation():
+    st.write('Im gna make this shit')
+    pass
   
-  # if st.button('Predict Daily Sales with the Additional Trucks'):
-  #   session_state.result_two = button_two_computation()
+  if st.button('Predict Daily Sales with the Additional Trucks'):
+    session_state.result_two = button_two_computation()
 
   
 
