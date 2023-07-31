@@ -432,7 +432,7 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
   
-  @st.cache
+  @st.cache_data
   def button_one_computation():
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
