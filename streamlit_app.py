@@ -432,7 +432,7 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
     
-  if st.button('Predict Profits'):
+  if st.button('Predict Daily Sales'):
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
@@ -454,7 +454,7 @@ with tab1:
       return TRUCKS  
   et_input = get_Extra()
   
-  if st.button('Predict Profits'):
+  if st.button('Predict Daily Sales with the Additional Trucks'):
     st.write('Im gna make this shit')
 
   
