@@ -447,26 +447,9 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
     pass
-
-  @st.cache
-  def button_two_computation():
-    st.write('Im gna make this shit')
-    pass
     
   if st.button('Predict Daily Sales'):
     button_one_computation()
-    # # Make the prediction  
-    # input_data = [[wd_int, bn_int, ct_int, tl_int]]
-    # input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
-    # prediction = xgb_alethea.predict(input_df)   
-    
-    # # Convert output data and columns, including profit, to a dataframe
-    # output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
-    # output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
-
-    # # predicted_price = xgb_alethea.predict(input_df)[0]
-    # predicted_sales = output_df['DAILY_SALES'].iloc[0]
-    # st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
   
   # Viewing predicted daily sales if more trucks were added
@@ -475,10 +458,14 @@ with tab1:
       st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
       return TRUCKS  
   et_input = get_Extra()
+
+  @st.cache_data
+  def button_two_computation():
+    st.write('Im gna make this shit')
+    pass
   
   if st.button('Predict Daily Sales with the Additional Trucks'):
     button_two_computation()
-    # st.write('Im gna make this shit')
 
   
 
