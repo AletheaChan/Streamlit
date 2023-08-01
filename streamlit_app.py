@@ -16,13 +16,6 @@ tab1,tab2 = st.tabs(["tab1","tab2"])
 with tab1:
   import xgboost as xgb
   
-  class SessionState:
-    def __init__(self):
-        self.result_one = None
-        self.result_two = None
-
-  session_state = SessionState()
-  
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations?')
   st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
@@ -440,8 +433,8 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  @st.cache_data
-  def button_one_computation():
+  
+  if st.button('Predict Daily Sales'):
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
@@ -454,10 +447,6 @@ with tab1:
     # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
-    pass
-    
-  if st.button('Predict Daily Sales'):
-    session_state.result_one = button_one_computation()
 
   
   # Viewing predicted daily sales if more trucks were added
@@ -466,14 +455,9 @@ with tab1:
       st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
       return TRUCKS  
   et_input = get_Extra()
-
-  @st.cache_data
-  def button_two_computation():
-    st.write('Im gna make this shit')
-    pass
   
   if st.button('Predict Daily Sales with the Additional Trucks'):
-    session_state.result_two = button_two_computation()
+    st.write('Im gna make this shit')
 
   
 
