@@ -448,12 +448,14 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
+  et_mapping  = { '1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6, '8':7, '9':8, '10':9}
   
   # Viewing predicted daily sales if more trucks were added
   def get_Extra():
-      TRUCKS = st.slider('Number of additional trucks', 0, 10, 0)
-      st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
-      return TRUCKS  
+    TRUCKS = st.selectbox('Select a truck location', et_mapping)
+    # TRUCKS = st.slider('Number of additional trucks', 0, 10, 0)
+    st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
+    return TRUCKS  
   et_input = get_Extra()
   
   if st.button('Predict Daily Sales with the Additional Trucks'):
