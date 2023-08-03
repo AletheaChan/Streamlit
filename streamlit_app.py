@@ -447,7 +447,14 @@ with tab1:
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
   st.title('Daily Sales in the Future')
-  st.markdown("Using the city population, we can predict future daily sales in a week")
+  st.markdown("Sales is extremely dependent on traffic in the city, so its population would generally be directly correlated to its daily sales. Hence, through usage of the city population, we can predict future daily sales")
+  st.write('According to Online Sources, here is the average yearly population growth for each city in the United States of America
+  San Mateo:
+  Seattle:
+  New York City:
+  Boston:
+  Denver: ')
+  
   
   # Viewing predicted daily sales in the future
   def get_Extra():
@@ -457,7 +464,8 @@ with tab1:
   et_input = get_Extra()
   
   if st.button('Predict Daily Sales Then'):
-    st.write('Im gna make this shit')
+    st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
+    st.write('The predicted daily sales then would be (im finding out!)'))
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, et_input]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'YEARS'])
