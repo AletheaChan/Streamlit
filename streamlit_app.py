@@ -450,7 +450,7 @@ with tab1:
   
   # Viewing predicted daily sales in the future
   def get_Extra():
-    YEARS = st.slider('Number of years', 0, 5, 0)
+    YEARS = st.slider('Number of years later', 1, 5, 0)
     st.write("Predicting daily sales in ", YEARS, 'year(s)')
     return YEARS  
   et_input = get_Extra()
