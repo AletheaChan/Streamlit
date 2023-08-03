@@ -448,7 +448,7 @@ with tab1:
 
   st.title('Daily Sales in the Future')
   st.markdown("Sales is extremely dependent on traffic in the city, so its population would generally be directly correlated to its daily sales. Hence, through usage of the city population, we can predict future daily sales")
-  st.write('''According to Online Sources, here is the average yearly population growth for each city in the United States of America')
+  st.write('According to Online Sources, here is the average yearly population growth for each city in the United States of America')
   
   
   # Viewing predicted daily sales in the future
@@ -534,5 +534,3 @@ with tab2:
   #   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   #   back_from_funcction = insert_row_snowflake(add_my_fruit)
   #   streamlit.text(back_from_function)
-
-
