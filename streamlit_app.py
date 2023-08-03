@@ -11,15 +11,14 @@ from urllib.error import URLError
 # from streamlit import caching
 
 
-tab1,tab2 = st.tabs(["tab1","tab2"])
+tab1,tab2 = st.tabs(["Daily Sales Prediction","tab2"])
 
 with tab1:
   import xgboost as xgb
   
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations?')
-  st.markdown("This tab allows you to make predictions on the price of a listing based on the neighbourhood and room type. The model used is a Random Forest Regressor trained on the Airbnb Singapore listings dataset.")
-  st.write('Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.')
+  st.markdown("This tab predicts the sales made by a truck with the specific user inputs. Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.")
 
   with open('xgb_alethea.pkl', 'rb') as file:
         xgb_alethea = pickle.load(file)
@@ -444,9 +443,11 @@ with tab1:
     output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
     output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
 
-    # predicted_price = xgb_alethea.predict(input_df)[0]
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
+
+  st.title('Daily Sales in the Future')
+  st.markdown("Using the city population, we can predict future daily sales in a week")
   
   # Viewing predicted daily sales in the future
   def get_Extra():
@@ -457,6 +458,12 @@ with tab1:
   
   if st.button('Predict Daily Sales Then'):
     st.write('Im gna make this shit')
+    # Make the prediction  
+    input_data = [[wd_int, bn_int, ct_int, et_input]]
+    input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'YEARS'])
+    
+    # Convert output data and columns, including profit, to a dataframe
+
 
   
 
