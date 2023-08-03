@@ -460,7 +460,7 @@ with tab1:
   
   if st.button('Predict Daily Sales Then'):
     st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
-    st.write('The predicted daily sales then would be (im finding out!)')
+    st.write('The predicted daily sales then would be im finding out!')
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, et_input]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'YEARS'])
