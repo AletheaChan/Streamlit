@@ -448,14 +448,14 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
   
-  # Viewing predicted daily sales if more trucks were added
+  # Viewing predicted daily sales in the future
   def get_Extra():
-    TRUCKS = st.slider('Number of additional trucks', 0, 10, 0)
-    st.write("Predicting daily sales with an additional ", TRUCKS, 'truck(s)')
-    return TRUCKS  
+    YEARS = st.slider('Number of years', 0, 5, 0)
+    st.write("Predicting daily sales in ", TRUCKS, 'year(s)')
+    return YEARS  
   et_input = get_Extra()
   
-  if st.button('Predict Daily Sales with the Additional Trucks'):
+  if st.button('Predict Daily Sales Then'):
     st.write('Im gna make this shit')
 
   
