@@ -447,8 +447,9 @@ with tab1:
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
   st.title('Daily Sales in the Future')
-  st.markdown("Sales is extremely dependent on traffic in the city, so its population would generally be directly correlated to its daily sales. Hence, through usage of the city population, we can predict future daily sales")
-  st.write('According to Online Sources, here is the average yearly population growth for each city in the United States of America')
+  st.markdown("Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, 
+  it tends to drive higher daily sales due to increased consumer demand. Leveraging the city's population data, we can predict future daily sales trends, considering the average yearly population growth 
+  for each city in the United States of America, as reported in online sources.')
   
   
   # Viewing predicted daily sales in the future
