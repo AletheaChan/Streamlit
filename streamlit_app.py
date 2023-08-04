@@ -449,12 +449,11 @@ with tab1:
   st.title('Daily Sales in the Future')
   st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand.')
   st.write('Leveraging the city\'s population data, we can predict future daily sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
-  st.write('San Mateo:')
-  st.write('Seattle:')
-  st.write('New York City:')
-  st.write('Boston:')
-  st.write('Denver:')
-  
+  st.write('San Mateo: 4,600')
+  st.write('Seattle: 30,000')
+  st.write('New York City: 70,000')
+  st.write('Boston: 17,000')
+  st.write('Denver: 34,000')
   
   # Viewing predicted daily sales in the future
   def get_Extra():
