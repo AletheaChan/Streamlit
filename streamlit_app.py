@@ -447,13 +447,12 @@ with tab1:
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
   st.title('Daily Sales in the Future')
-  st.text_area('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand.'
-  'Leveraging the city\'s population data, we can predict future daily sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.'
-  'San Mateo:'
-  'Seattle:'
-  'New York City:'
-  'Boston:'
-  'Denver:')
+  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Leveraging the city\'s population data, we can predict future daily sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
+  st.write('San Mateo:')
+  st.write('Seattle:')
+  st.write('New York City:')
+  st.write('Boston:')
+  st.write('Denver:')
   
   
   # Viewing predicted daily sales in the future
