@@ -445,8 +445,9 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
-  st.title('Daily Sales in the Future')
-  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Leveraging the city\'s population data, we can predict future daily sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
+  st.title('Yearly Revenue in the Future')
+  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
+  st.write('With this, we would be able to look at the projected slaes increase over a span of 5 years')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
   st.write('New York City: 70,000')
@@ -466,7 +467,7 @@ with tab1:
   if st.button('Predict Yearly Revenue'):
     # st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
     
-    if YEARS == 1:
+    if (et_input == 1):
       output_data = [bn_int, ct_int, et_input]
       output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
       future_sales = output_df['1'].iloc[0]
