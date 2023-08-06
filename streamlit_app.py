@@ -437,11 +437,9 @@ with tab1:
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
     prediction = xgb_alethea.predict(input_df)   
-    
     # Convert output data and columns, including profit, to a dataframe
     output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
     output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
-
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
@@ -454,6 +452,8 @@ with tab1:
   st.write('Boston: 17,000')
   st.write('Denver: 34,000')
 
+  with open('fs_alethea.pkl', 'rb') as file:
+        fs_alethea = pickle.load(file)
   # Load the cleaned and transformed dataset
   df2 = pd.read_csv('fs_alethea.csv')
   
@@ -465,13 +465,17 @@ with tab1:
   et_input = get_Extra()
   
   if st.button('Predict Yearly Revenue'):
-    # st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
+    # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
     
     if (et_input == 1):
+      input_data = [[bn_int, ct_int]]
+      input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY'])
+      prediction = fs_alethea.predict(input_df)   
+    
       output_data = [bn_int, ct_int, et_input]
       output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
       future_sales = output_df['1'].iloc[0]
-      st.write('The predicted daily sales then would be {:.2f}.'.format(future_sales))
+      st.write('The projected yearly revenue then would be {:.2f}.'.format(future_sales))
 
   
 
