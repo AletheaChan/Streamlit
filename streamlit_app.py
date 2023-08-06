@@ -456,25 +456,19 @@ with tab1:
   # Load the cleaned and transformed dataset
   df2 = pd.read_csv('fs_alethea.csv')
   
-  # Viewing predicted daily sales in the future
+  # Viewing predicted yearly sales in the future
   def get_Extra():
-    YEARS = st.slider('Number of years later', 1, 5, 0)
-    st.write("Predicting daily sales in ", YEARS, 'year(s)')
+    YEARS = st.slider('Number of years later', 1, 5, 1)
+    st.write("Predicting yearly revenue in ", YEARS, 'year(s)')
     return YEARS  
   et_input = get_Extra()
   
-  if st.button('Predict Daily Sales Then'):
-    st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
-    # Make the prediction  
-
-    if YEARS == 1:
-      input_data = [[bn_int, ct_int, et_input]]
-      input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
+  if st.button('Predict Yearly Revenue'):
+    # st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
     
-      # Convert output data and columns, including profit, to a dataframe
-      output_data = [bn_int, ct_int, prediction[0]]
+    if YEARS == 1:
+      output_data = [bn_int, ct_int, et_input]
       output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
-
       future_sales = output_df['1'].iloc[0]
       st.write('The predicted daily sales then would be {:.2f}.'.format(future_sales))
 
