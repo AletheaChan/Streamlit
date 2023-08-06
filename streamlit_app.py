@@ -452,8 +452,8 @@ with tab1:
   st.write('Boston: 17,000')
   st.write('Denver: 34,000')
 
-  with open('fs_alethea.pkl', 'rb') as file:
-        fs_alethea = pickle.load(file)
+  # with open('fs_alethea.pkl', 'rb') as file:
+  #       fs_alethea = pickle.load(file)
   # Load the cleaned and transformed dataset
   df2 = pd.read_csv('fs_alethea.csv')
   
@@ -466,16 +466,22 @@ with tab1:
   
   if st.button('Predict Yearly Revenue'):
     # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
+
+    filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
+
+    # Display predicted revenue
+    predicted_revenue = filtered_data[str(et_input)].iloc[0]
+    st.write(f"The projected yearly revenue {df2['CITY']}, {df2['TRUCK_BRAND_NAME'} in {et_input} years would be: {predicted_revenue:.2f}")
     
-    if (et_input == 1):
-      input_data = [[bn_int, ct_int]]
-      input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY'])
-      prediction = fs_alethea.predict(input_df)   
+    # if (et_input == 1):
+    #   input_data = [[bn_int, ct_int]]
+    #   input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY'])
+    #   prediction = fs_alethea.predict(input_df)   
     
-      output_data = [bn_int, ct_int, et_input]
-      output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
-      future_sales = output_df['1'].iloc[0]
-      st.write('The projected yearly revenue then would be {:.2f}.'.format(future_sales))
+    #   output_data = [bn_int, ct_int, et_input]
+    #   output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
+    #   future_sales = output_df['1'].iloc[0]
+    #   st.write('The projected yearly revenue then would be {:.2f}.'.format(future_sales))
 
   
 
