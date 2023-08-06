@@ -17,7 +17,7 @@ with tab1:
   import xgboost as xgb
   
 # Define the app title and favicon
-  st.title('How much can you make from the TastyBytes locations?')
+  st.title('How much can you make from the TastyBytes locations?💲')
   st.markdown("This tab predicts the sales made by a truck with the specific user inputs. Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.")
 
   with open('xgb_alethea.pkl', 'rb') as file:
@@ -404,19 +404,19 @@ with tab1:
   
 
   def get_DAYOFWEEK():
-    DAY_OF_WEEK = st.selectbox('Select a day of week', wd_mapping)
+    DAY_OF_WEEK = st.selectbox('Select a day of week 📆', wd_mapping)
     return DAY_OF_WEEK
 
   def get_TRUCK_BRAND_NAME():
-      TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name', bn_mapping)
+      TRUCK_BRAND_NAME = st.selectbox('Select a truck brand name 🚐', bn_mapping)
       return TRUCK_BRAND_NAME
     
   def get_CITY():
-      CITY = st.selectbox('Select a city', ct_mapping)
+      CITY = st.selectbox('Select a city 🏕️', ct_mapping)
       return CITY
 
   def get_LOCATION():
-      LOCATION = st.selectbox('Select a truck location', tl_mapping)
+      LOCATION = st.selectbox('Select a truck location 📍', tl_mapping)
       return LOCATION  
 
   # Define the user input fields
@@ -443,7 +443,7 @@ with tab1:
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
-  st.title('Yearly Revenue in the Future')
+  st.title('Projected Yearly Revenue💹')
   st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
   st.write('With this, we would be able to look at the projected sales increase over a span of 5 years')
   st.write('San Mateo: 4,600')
