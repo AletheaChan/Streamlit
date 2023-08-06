@@ -471,7 +471,7 @@ with tab1:
 
     # Display predicted revenue
     predicted_revenue = filtered_data[str(et_input)].iloc[0]
-    st.write(f"The projected yearly revenue {df2['CITY']}, {df2['TRUCK_BRAND_NAME'} in {et_input} years would be: {predicted_revenue:.2f}")
+    st.write(f"The projected yearly revenue {df2['CITY']}, {df2['TRUCK_BRAND_NAME']} in {et_input} years would be: {predicted_revenue:.2f}")
     
     # if (et_input == 1):
     #   input_data = [[bn_int, ct_int]]
