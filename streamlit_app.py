@@ -25,7 +25,6 @@ with tab1:
 
   # Load the cleaned and transformed dataset
   df = pd.read_csv('df_aletheaDOW.csv')
-  # sales = df[['DAILY_SALES']] # Extract weekly sales, the target variable
 
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
   wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
@@ -453,6 +452,9 @@ with tab1:
   st.write('New York City: 70,000')
   st.write('Boston: 17,000')
   st.write('Denver: 34,000')
+
+  # Load the cleaned and transformed dataset
+  df2 = pd.read_csv('fs_alethea.csv')
   
   # Viewing predicted daily sales in the future
   def get_Extra():
@@ -463,13 +465,18 @@ with tab1:
   
   if st.button('Predict Daily Sales Then'):
     st.write('Current predicted daily sales: {:.2f}.'.format(predicted_sales))
-    st.write('The predicted daily sales then would be im finding out!')
     # Make the prediction  
-    input_data = [[wd_int, bn_int, ct_int, et_input]]
-    input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'YEARS'])
-    
-    # Convert output data and columns, including profit, to a dataframe
 
+    if YEARS == 1:
+      input_data = [[bn_int, ct_int, et_input]]
+      input_df = pd.DataFrame(input_data, columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
+    
+      # Convert output data and columns, including profit, to a dataframe
+      output_data = [bn_int, ct_int, prediction[0]]
+      output_df = pd.DataFrame([output_data], columns=['TRUCK_BRAND_NAME', 'CITY', '1'])
+
+      future_sales = output_df['1'].iloc[0]
+      st.write('The predicted daily sales then would be {:.2f}.'.format(future_sales))
 
   
 
