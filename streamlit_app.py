@@ -477,13 +477,20 @@ with tab1:
       truck_brand = revenueRow['TRUCK_BRAND_NAME'].values[0]
       years_revenue = revenueRow['YEARS_REVENUE'].values[0]
       city_pop = revenueRow['CITY_POPULATION'].values[0]
-      
       # Get the column index for the future prediction
       future_column = str(et_input)
       projected_revenue = futureRevenueRow[future_column].values[0]
       
-      st.write(f'In 2022, the yearly revenue of {truck_brand} in {city} to date is ${years_revenue}, with a population of {city_pop}.')
-      st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: :green[${projected_revenue}], with an increase of :green[%] since 2022.")
+      # Round off the revenue values to the nearest whole number
+      rounded_years_revenue = round(years_revenue)
+      rounded_projected_revenue = round(projected_revenue)
+
+      # Calculate the increase in revenue percentage
+      revenue_increase_percentage = ((projected_revenue - years_revenue) / years_revenue) * 100
+      rounded_increase_percentage = round(revenue_increase_percentage, 2)
+      
+      st.write(f'In 2022, the yearly revenue of {truck_brand} in {city} to date is ${rounded_years_revenue}, with a population of {city_pop}.')
+      st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: :green[${rounded_projected_revenue}], with an increase of :green[{rounded_increase_percentage}%] since 2022.")
     else:
       st.write('No data found for the provided city and truck brand name.')
     
