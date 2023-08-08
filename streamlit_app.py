@@ -445,7 +445,7 @@ with tab1:
   
   st.divider()
   st.title('Projected Yearly Revenue 💰')
-  st.markdown('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the **United States of America**, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
+  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the **United States of America**, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
   st.write('Average yearly population growth for each city 🌇')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
