@@ -24,6 +24,17 @@ with tab1:
         xgb_alethea = pickle.load(file)
   df = pd.read_csv('df_aletheaDOW.csv')
 
+  # Access the feature importance scores DataFrame from the loaded model
+  feature_importances_df = loaded_model['feature_contributions']
+  # Display Feature Importance
+  st.markdown('Feature Importance Analysis')
+  if 'Weight' in feature_importances_df.columns:
+    feature_importances_df_sorted = feature_importances_df.sort_values(by='Weight', ascending=False)
+    st.dataframe(feature_importances_df_sorted)
+    st.write('Feature importance scores for each feature in the model.')
+  else:
+    st.write('This model does not provide feature importance scores.')
+
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
   wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
   wd_labels = [wd_reverse_mapping[i] for i in sorted(wd_reverse_mapping.keys())]
