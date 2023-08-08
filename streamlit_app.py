@@ -430,8 +430,27 @@ with tab1:
   tl_int = tl_mapping[tl_input]
 
   with st.sidebar:
-    st.subheader('For easy of use, here are some locations for each city.')
-    st.write('San Mateo \nSeattle \nNew York City \nBoston \nDenver')
+    st.subheader('For easy of use, here are some locations for each city 🗺️📍')
+    st.write(""" **San Mateo** 🏞️
+    - Fred's Market
+    - CoinFlip Bitcoin ATM
+    - Peninsula Golf & Country Club
+    **Seattle** ☕️
+    - Seattle Tower
+    - Stevens Triangle
+    - East Portal Viewpoint
+    **New York City** 🗽
+    - National Museum Of Hip Hop
+    - Alcoholics Anonymous
+    - Poseidon Bakery
+    **Boston** 🏙️
+    - Fort Independence Park
+    - Skywalk Observatory
+    - Stevens Triangle
+    **Denver** 🏔️
+    - Pelham College
+    - Inspiration Point Park
+    - Aviation & Space Center of the Rockies """)
 
   if st.button('Predict Daily Sales'):
     # Make the prediction  
