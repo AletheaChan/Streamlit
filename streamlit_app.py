@@ -467,21 +467,27 @@ with tab1:
   
   # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
   if st.button('Predict Yearly Revenue'):
-    # filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
+    futureRevenueRow = df2[(df2['CITY'] == original_city) & (df2['TRUCK_BRAND_NAME'] == originalBrand)]
     revenueRow = df3[(df3['CITY'] == originalCity) & (df3['TRUCK_BRAND_NAME'] == originalBrand)]
     # Display predicted revenue
     # predicted_revenue = filtered_data[str(et_input)].iloc[0]
 
-    # Check if the revenueRow DataFrame is not empty
-    if not revenueRow.empty:
+    # Check that revenueRow & futureRevenueRow DataFrames are not empty
+    if not revenueRow.empty and not futureRevenueRow.empty:
       # Extract information from the filtered row
-      years_revenue = revenueRow['YEARS_REVENUE'].values[0]
-      city_pop = revenueRow['CITY_POPULATION'].values[0]
       city = revenueRow['CITY'].values[0]
       truck_brand = revenueRow['TRUCK_BRAND_NAME'].values[0]
+      years_revenue = revenueRow['YEARS_REVENUE'].values[0]
+      city_pop = revenueRow['CITY_POPULATION'].values[0]
+      
+      # Get the column index for the future prediction
+      future_column = str(et_input)
+      projected_revenue = futureRevenueRow[future_column].values[0]
+      
       st.write(f'In 2022, the yearly revenue of {truck_brand} in {city} to date is ${years_revenue}, with a population of {city_pop}.')
-  
-    st.write(f"The projected yearly revenue then would be: :green[predicted rev], with an increase of :green[%] since 2022.")
+      st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: :green[${projected_revenue}], with an increase of :green[%] since 2022.")
+    else:
+      st.write('No data found for the provided city and truck brand name.')
     
   
 
