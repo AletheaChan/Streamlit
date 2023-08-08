@@ -470,10 +470,10 @@ with tab1:
     predicted_revenue = filtered_data[str(et_input)].iloc[0]
 
     # Check if the filtered_row DataFrame is not empty
-    if not filtered_row.empty:
+    if not revenueRow.empty:
       # Extract information from the filtered row
-      years_revenue = filtered_row['YEARS_REVENUE'].values[0]
-      city_pop = filtered_row['CITY_POPULATION'].values[0]
+      years_revenue = revenueRow['YEARS_REVENUE'].values[0]
+      city_pop = revenueRow['CITY_POPULATION'].values[0]
       st.write(f'In 2022, the yearly revenue so far is ${years_revenue}, with a current population of {city_pop}.')
     else:
       st.write('No data found for the provided city and truck brand name.')
