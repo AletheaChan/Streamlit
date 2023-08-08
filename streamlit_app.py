@@ -18,7 +18,7 @@ with tab1:
   
 # Define the app title and favicon
   st.title('Predicting Daily Sales')
-  st.header('How much can you make from the TastyBytes locations?')
+  st.title('How much can you make from the TastyBytes locations?')
   st.markdown("Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales. Using the specific user inputs, the daily sales made by the truck would be predicted.")
   
   # Loading the pickle & dataset
@@ -444,8 +444,8 @@ with tab1:
 
   
   st.divider()
-  st.header('Projected Yearly Revenue 💰')
-  st.subheader('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the **United States of America**, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
+  st.title('Projected Yearly Revenue 💰')
+  st.markdown('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the **United States of America**, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
   st.write('Average yearly population growth for each city 🌇')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
