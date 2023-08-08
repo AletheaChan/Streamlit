@@ -443,7 +443,7 @@ with tab1:
   
   st.divider()
   st.title('Projected Yearly Revenue 💰')
-  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. :green[As city population increases, it tends to drive higher daily sales due to increased consumer demand.] Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources. :blue[With this, we would be able to look at the projected sale increase for each truck brand in teh cities over a span of 5 years]')
+  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. :green[As city population increases, it tends to drive higher daily sales due to increased consumer demand.] Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources. :blue[With this, we would be able to look at the projected sale increase for each truck brand in the cities over a span of 5 years]')
   st.write('Average yearly population growth for each city 🌇')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
@@ -490,7 +490,10 @@ with tab1:
       rounded_increase_percentage = round(revenue_increase_percentage, 2)
       
       st.write(f'In 2022, the yearly revenue of {truck_brand} in {city} to date is ${rounded_years_revenue}, with a population of {city_pop}.')
-      st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: :green[${rounded_projected_revenue}], with an increase of :green[{rounded_increase_percentage}%] since 2022.")
+      st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: ${rounded_projected_revenue}, with an percentage change of {rounded_increase_percentage}% since 2022.")
+       # Check if the revenue increase percentage is negative
+      if rounded_increase_percentage < 0:
+      st.write("Seeing that the revenue growth was not positive, this suggests that we should look into other aspects, such as the menu items offered.")
     else:
       st.write('No data found for the provided city and truck brand name.')
     
