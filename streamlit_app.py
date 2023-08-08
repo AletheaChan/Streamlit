@@ -17,7 +17,7 @@ with tab1:
   
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations? 💡')
-  st.markdown("**Tell us more about the location!**")
+  st.markdown("**Tell us more on what you want to predict!**")
   
   # Loading the pickle & dataset
   with open('xgb_alethea.pkl', 'rb') as file:
