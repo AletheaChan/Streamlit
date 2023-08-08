@@ -469,8 +469,6 @@ with tab1:
   if st.button('Predict Yearly Revenue'):
     futureRevenueRow = df2[(df2['CITY'] == originalCity) & (df2['TRUCK_BRAND_NAME'] == originalBrand)]
     revenueRow = df3[(df3['CITY'] == originalCity) & (df3['TRUCK_BRAND_NAME'] == originalBrand)]
-    # Display predicted revenue
-    # predicted_revenue = filtered_data[str(et_input)].iloc[0]
 
     # Check that revenueRow & futureRevenueRow DataFrames are not empty
     if not revenueRow.empty and not futureRevenueRow.empty:
