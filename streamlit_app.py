@@ -430,8 +430,31 @@ with tab1:
   tl_int = tl_mapping[tl_input]
 
   with st.sidebar:
-    st.subheader('For easy of use, here are some locations for each city 🗺️📍')
-    st.write("""
+    # Apply custom styling to bullet points
+    st.sidebar.write("""
+    <style>
+    [data-testid="stText"] ul {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 20px;
+    }
+    [data-testid="stText"] li:before {
+        content: "•";
+        color: #FF5733;
+        font-size: 1.2em;
+        margin-right: 10px;
+    }
+    [data-testid="stText"] li {
+        font-size: 14px;  /* Adjust the font size as needed */
+        line-height: 1.3;
+        margin-bottom: 8px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Display content with custom styling
+    st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
+    st.sidebar.write("""
     **San Mateo** 🏞️
     - Applied Strategies (Tasty Tibs)
     - American Prime Financial (Freezing Point)
@@ -444,7 +467,7 @@ with tab1:
     
     **New York City** 🗽
     - Best Buy Shellfish (Freezing Point)
-    - Gateway Newstands	(Kitakata Ramen Bar)
+    - Gateway Newstands (Kitakata Ramen Bar)
     - Poseidon Bakery (Le Coin des Crêpes)
     
     **Boston** 🏙️
@@ -455,7 +478,8 @@ with tab1:
     **Denver** 🏔️
     - Pelham College (Le Coin des Crêpes)
     - Inspiration Point Park (Smoky BBQ)
-    - Aviation & Space Center of the Rockies (Cheeky Greek) """)
+    - Aviation & Space Center of the Rockies (Cheeky Greek)
+    """)
 
   if st.button('Predict Daily Sales'):
     # Make the prediction  
