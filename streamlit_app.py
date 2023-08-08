@@ -11,13 +11,12 @@ from urllib.error import URLError
 # from streamlit import caching
 
 
-tab1,tab2 = st.tabs(["Sales Prediction","tab2"])
+tab1,tab2 = st.tabs(["Predicting Daily Salesn","tab2"])
 
 with tab1:
   import xgboost as xgb
   
 # Define the app title and favicon
-  st.title('Predicting Daily Sales')
   st.title('How much can you make from the TastyBytes locations? 💡')
   st.markdown("Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales. Using the specific user inputs, the daily sales made by the truck would be predicted.")
   
@@ -445,7 +444,7 @@ with tab1:
   
   st.divider()
   st.title('Projected Yearly Revenue 💰')
-  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. :green[As city population increases, it tends to drive higher daily sales due to increased consumer demand.] Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
+  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. :green[As city population increases, it tends to drive higher daily sales due to increased consumer demand.] Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources. :blue[With this, we would be able to look at the projected sale increase for each truck brand in teh cities over a span of 5 years]')
   st.write('Average yearly population growth for each city 🌇')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
@@ -455,6 +454,7 @@ with tab1:
 
   # Load the cleaned and transformed dataset
   df2 = pd.read_csv('fs_alethea.csv')
+  df3 = pd.read_csv('yr_alethea.csv')
   
   # Viewing predicted yearly sales in the future
   def get_Extra():
@@ -468,71 +468,10 @@ with tab1:
     filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
     # Display predicted revenue
     predicted_revenue = filtered_data[str(et_input)].iloc[0]
-    st.write(f"The projected yearly revenue then would be: {predicted_revenue:.2f}, with an increase of % since 2022.")
+    st.write('In 2022, the yearly revenue so far is (years_revenue), with a current population of (citypop).')
+    st.write(f"The projected yearly revenue then would be: :green[predicted rev], with an increase of :green[%] since 2022.")
     
   
 
 with tab2:
   st.title('My Parents New Healthy Diner')
-
-  st.header('Breakfast Favourites')
-  st.text('🥣 Omega 3 & Blueberry Oatmeal')
-  st.text('🥗 Kale, Spinach & Rocket Smoothie')
-  st.text('🐔 Hard-Boiled Free-Range Egg')
-  st.text('🥑🍞 Avocado Toast')
-  
-  # streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
-  # my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-  # my_fruit_list = my_fruit_list.set_index('Fruit')
-  
-  # # Interactive widget (Multi-select), A pick list to pick the fruit they want to include 
-  # fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado', 'Strawberries'])
-  # # Filtering table data
-  # fruits_to_show = my_fruit_list.loc[fruits_selected]
-  # # Table display
-  # streamlit.dataframe(fruits_to_show)
-  
-  # # Repeatable code block
-  # def get_fruityvice_data(this_fruit_choice):
-  #   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+this_fruit_choice)
-  #   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-  #   return fruityvice_normalized
-  
-  # # New Fruityvice API Response
-  # streamlit.header("Fruityvice Fruit Advice!")
-  # try:
-  #   fruit_choice = streamlit.text_input('What fruit would you like information about?')
-  #   if not fruit_choice:
-  #     streamlit.error("Please select a fruit to get information.")
-  #   else:
-  #     back_from_function = get_fruityvice_data(fruit_choice)
-  #     streamlit.dataframe(back_from_function)
-   
-  # except URLError as e:
-  #   streamlit.error()
-  
-  # # Fruit Load List
-  # streamlit.header("View Our Fruit List – Add Your Favourites!")
-  # def get_fruit_load_list():
-  #   with my_cnx.cursor() as my_cur:
-  #     my_cur.execute("select * from fruit_load_list")
-  #     return my_cur.fetchall()
-  
-  # # Button to load the fruit list
-  # if streamlit.button('Get Fruit Load List'):
-  #   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  #   my_data_rows = get_fruit_load_list()
-  #   my_cnx.close()
-  #   streamlit.dataframe(my_data_rows)
-  
-  # # Allow end user to add fruit to the list
-  # def insert_row_snowflake(new_fruit):
-  #   with my_cnx.cursor() as my_cur:
-  #     my_cur.execute("Insert into fruit_load_list values ('" + new_fruit + "')")
-  #     return 'Thanks for adding '+new_fruit
-    
-  # add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-  # if streamlit.button('Add a Fruit to the List'):
-  #   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  #   back_from_funcction = insert_row_snowflake(add_my_fruit)
-  #   streamlit.text(back_from_function)
