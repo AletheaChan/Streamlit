@@ -493,7 +493,7 @@ with tab1:
       st.write(f"The projected yearly revenue of {truck_brand} in {city} in {et_input} year(s) would be: ${rounded_projected_revenue}, with an percentage change of {rounded_increase_percentage}% since 2022.")
        # Check if the revenue increase percentage is negative
       if rounded_increase_percentage < 0:
-      st.write("Seeing that the revenue growth was not positive, this suggests that we should look into other aspects, such as the menu items offered.")
+        st.write("Seeing that the revenue growth was not positive, this suggests that we should look into other aspects, such as the menu items offered.")
     else:
       st.write('No data found for the provided city and truck brand name.')
     
