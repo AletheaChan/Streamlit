@@ -431,7 +431,7 @@ with tab1:
 
   with st.sidebar:
     # Apply custom styling to bullet points
-    st.sidebar.write("""
+    st.sidebar.markdown("""
     <style>
     [data-testid="stText"] ul {
         list-style: none;
@@ -454,7 +454,7 @@ with tab1:
     
     # Display content with custom styling
     st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
-    st.sidebar.write("""
+    st.sidebar.markdown("""
     **San Mateo** 🏞️
     - Applied Strategies (Tasty Tibs)
     - American Prime Financial (Freezing Point)
