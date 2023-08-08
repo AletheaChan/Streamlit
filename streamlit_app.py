@@ -17,23 +17,12 @@ with tab1:
   
 # Define the app title and favicon
   st.title('How much can you make from the TastyBytes locations? 💡')
-  st.markdown("Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales. Using the specific user inputs, the daily sales made by the truck would be predicted.")
+  st.markdown("**Tell us more about the location!**")
   
   # Loading the pickle & dataset
   with open('xgb_alethea.pkl', 'rb') as file:
         xgb_alethea = pickle.load(file)
   df = pd.read_csv('df_aletheaDOW.csv')
-
-  # Access the feature importance scores DataFrame from the loaded model
-  feature_importances_df = xgb_alethea['feature_contributions']
-  # Display Feature Importance
-  st.markdown('Feature Importance Analysis')
-  if 'Weight' in feature_importances_df.columns:
-    feature_importances_df_sorted = feature_importances_df.sort_values(by='Weight', ascending=False)
-    st.dataframe(feature_importances_df_sorted)
-    st.write('Feature importance scores for each feature in the model.')
-  else:
-    st.write('This model does not provide feature importance scores.')
 
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
   wd_reverse_mapping = {v: k for k, v in wd_mapping.items()}
