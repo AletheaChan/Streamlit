@@ -429,24 +429,36 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
+  # Apply custom styling to bullet points
+  st.write(""" <style>
+  [data-testid="stText"] ul { list-style: none; margin-left: 0; padding-left: 20px; }
+  [data-testid="stText"] li:before { content: "•"; color: #FF5733; font-size: 1.2em; margin-right: 10px; }
+  </style>
+  """, unsafe_allow_html=True)
+
   with st.sidebar:
     st.subheader('For easy of use, here are some locations for each city 🗺️📍')
-    st.write(""" **San Mateo** 🏞️
+    st.write("""
+    **San Mateo** 🏞️
     - Fred's Market
     - CoinFlip Bitcoin ATM
     - Peninsula Golf & Country Club
+    
     **Seattle** ☕️
     - Seattle Tower
     - Stevens Triangle
     - East Portal Viewpoint
+    
     **New York City** 🗽
     - National Museum Of Hip Hop
     - Alcoholics Anonymous
     - Poseidon Bakery
+    
     **Boston** 🏙️
     - Fort Independence Park
     - Skywalk Observatory
     - Stevens Triangle
+    
     **Denver** 🏔️
     - Pelham College
     - Inspiration Point Park
