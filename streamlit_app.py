@@ -429,6 +429,10 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
+  with st.sidebar:
+    st.subheader('For easy of use, here are some locations for each city.')
+    st.write('San Mateo \nSeattle \nNew York City \nBoston \nDenver')
+
   if st.button('Predict Daily Sales'):
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
