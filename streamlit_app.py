@@ -477,9 +477,9 @@ with tab1:
       # Extract information from the filtered row
       years_revenue = revenueRow['YEARS_REVENUE'].values[0]
       city_pop = revenueRow['CITY_POPULATION'].values[0]
-      st.write(f'In 2022, the yearly revenue so far is ${years_revenue}, with a current population of {city_pop}.')
-    else:
-      st.write('No data found for the provided city and truck brand name.')
+      city = revenueRow['CITY'].values[0]
+      truck_brand = revenueRow['TRUCK_BRAND_NAME'].values[0]
+      st.write(f'In 2022, the yearly revenue of {truck_brand} in {city} to date is ${years_revenue}, with a population of {city_pop}.')
   
     st.write(f"The projected yearly revenue then would be: :green[predicted rev], with an increase of :green[%] since 2022.")
     
