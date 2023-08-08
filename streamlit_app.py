@@ -430,29 +430,6 @@ with tab1:
   tl_int = tl_mapping[tl_input]
 
   with st.sidebar:
-    # Apply custom styling to bullet points
-    st.sidebar.markdown("""
-    <style>
-    [data-testid="stText"] ul {
-        list-style: none;
-        margin-left: 0;
-        padding-left: 20px;
-    }
-    [data-testid="stText"] li:before {
-        content: "•";
-        color: #FF5733;
-        font-size: 1.2em;
-        margin-right: 10px;
-    }
-    [data-testid="stText"] li {
-        font-size: 14px;  /* Adjust the font size as needed */
-        line-height: 1.3;
-        margin-bottom: 8px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
-    # Display content with custom styling
     st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
     st.sidebar.markdown("""
     **San Mateo** 🏞️
