@@ -467,7 +467,7 @@ with tab1:
   
   # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
   if st.button('Predict Yearly Revenue'):
-    futureRevenueRow = df2[(df2['CITY'] == original_city) & (df2['TRUCK_BRAND_NAME'] == originalBrand)]
+    futureRevenueRow = df2[(df2['CITY'] == originalCity) & (df2['TRUCK_BRAND_NAME'] == originalBrand)]
     revenueRow = df3[(df3['CITY'] == originalCity) & (df3['TRUCK_BRAND_NAME'] == originalBrand)]
     # Display predicted revenue
     # predicted_revenue = filtered_data[str(et_input)].iloc[0]
