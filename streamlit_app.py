@@ -8,10 +8,9 @@ import pickle
 import requests
 # from lime import lime_tabular
 from urllib.error import URLError
-# from streamlit import caching
 
 
-tab1,tab2 = st.tabs(["Predicting Daily Salesn","tab2"])
+tab1,tab2 = st.tabs(["Predicting Daily Sales","tab2"])
 
 with tab1:
   import xgboost as xgb
@@ -466,9 +465,19 @@ with tab1:
   # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
   if st.button('Predict Yearly Revenue'):
     filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
+    revenueRow = df3[(df3['CITY'] == ct_input) & (df3['TRUCK_BRAND_NAME'] == bn_int)]
     # Display predicted revenue
     predicted_revenue = filtered_data[str(et_input)].iloc[0]
-    st.write('In 2022, the yearly revenue so far is (years_revenue), with a current population of (citypop).')
+
+    # Check if the filtered_row DataFrame is not empty
+    if not filtered_row.empty:
+      # Extract information from the filtered row
+      years_revenue = filtered_row['YEARS_REVENUE'].values[0]
+      city_pop = filtered_row['CITY_POPULATION'].values[0]
+      st.write(f'In 2022, the yearly revenue so far is ${years_revenue}, with a current population of {city_pop}.')
+    else:
+      st.write('No data found for the provided city and truck brand name.')
+  
     st.write(f"The projected yearly revenue then would be: :green[predicted rev], with an increase of :green[%] since 2022.")
     
   
