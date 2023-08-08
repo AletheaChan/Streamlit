@@ -462,14 +462,17 @@ with tab1:
     return YEARS  
   et_input = get_Extra()
 
+  originalCity = ct_reverse_mapping[ct_int]
+  originalBrand = bn_reverse_mapping[bn_int]
+  
   # st.write('Current yearly revenue: {:.2f}.'.format(predicted_sales))
   if st.button('Predict Yearly Revenue'):
-    filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
-    revenueRow = df3[(df3['CITY'] == ct_input) & (df3['TRUCK_BRAND_NAME'] == bn_int)]
+    # filtered_data = df2[(df2['CITY'] == ct_int) & (df2['TRUCK_BRAND_NAME'] == bn_int)]
+    revenueRow = df3[(df3['CITY'] == originalCity) & (df3['TRUCK_BRAND_NAME'] == originalBrand)]
     # Display predicted revenue
-    predicted_revenue = filtered_data[str(et_input)].iloc[0]
+    # predicted_revenue = filtered_data[str(et_input)].iloc[0]
 
-    # Check if the filtered_row DataFrame is not empty
+    # Check if the revenueRow DataFrame is not empty
     if not revenueRow.empty:
       # Extract information from the filtered row
       years_revenue = revenueRow['YEARS_REVENUE'].values[0]
