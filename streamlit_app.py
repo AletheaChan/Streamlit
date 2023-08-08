@@ -11,19 +11,19 @@ from urllib.error import URLError
 # from streamlit import caching
 
 
-tab1,tab2 = st.tabs(["Daily Sales Prediction","tab2"])
+tab1,tab2 = st.tabs(["Sales Prediction","tab2"])
 
 with tab1:
   import xgboost as xgb
   
 # Define the app title and favicon
-  st.title('How much can you make from the TastyBytes locations?💲')
-  st.markdown("This tab predicts the sales made by a truck with the specific user inputs. Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales.")
-
+  st.title('Predicting Daily Sales')
+  st.header('How much can you make from the TastyBytes locations?')
+  st.markdown("Choose a Truck Brand Name, City, Truck Location and Time Frame to get the predicted sales. Using the specific user inputs, the daily sales made by the truck would be predicted.")
+  
+  # Loading the pickle & dataset
   with open('xgb_alethea.pkl', 'rb') as file:
         xgb_alethea = pickle.load(file)
-
-  # Load the cleaned and transformed dataset
   df = pd.read_csv('df_aletheaDOW.csv')
 
   wd_mapping  = { 'Monday':0,'Tuesday':1,'Wednesday':2,'Thursday':3,'Friday':4,'Saturday':5,'Sunday':6 }
@@ -390,9 +390,9 @@ with tab1:
                   'Cherry Hill Fountain': 2053, 'Malatesta Woodworks': 2054,'Boston University School Of Medicine': 2055,'Lamps Plus': 2056,'Beacon Alterations': 2057, 'Rainbow Point': 2058,
                   'Greenwood Phinney Ruv': 2059, 'Wings Over Washington': 2060,'Alvin Larkins Park': 2061,'A & J Commissary': 2062,'Square Square': 2063, 'Belleview Suites at DTC': 2064,
                   'Huntington Learning Centers': 2065, 'Franklin Hill Bha Court': 2066,'City University Of Seattle': 2067, 'Feel Good Llc': 2068, 'Godiva Cafe': 2069, 'Boston University Hillel': 2070,
-                  'Edna V Bynoe Park': 2071,'Falcon Park': 2072, 'Paul Agustinovich PhD': 2073,'Left Coast Entertainment': 2074,'86 East Thirty Ninth': 2075,'Magnolia Care': 2076, 'Northgate Park': 2077,
-                  'Emeritus At Pinehurst Park': 2078,'Chocolat Moderne': 2079, 'Boston University Plastic & Reconstructive Surgery': 2080, 'Bearing Institute': 2081, 'Havey Beach': 2082,
-                  'Horatio Harris Park': 2083,'Colorado Access': 2084, 'Hiram M Chittenden Locks': 2085,'Confluence East Park': 2086, 'Abingdon Square': 2087, 'New Freedom Park': 2088,
+                  'Edna V Bynoe Park': 2071, 'Falcon Park': 2072, 'Paul Agustinovich PhD': 2073,'Left Coast Entertainment': 2074,'86 East Thirty Ninth': 2075,'Magnolia Care': 2076, 'Northgate Park': 2077,
+                  'Emeritus At Pinehurst Park': 2078, 'Chocolat Moderne': 2079, 'Boston University Plastic & Reconstructive Surgery': 2080, 'Bearing Institute': 2081, 'Havey Beach': 2082,
+                  'Horatio Harris Park': 2083, 'Colorado Access': 2084, 'Hiram M Chittenden Locks': 2085,'Confluence East Park': 2086, 'Abingdon Square': 2087, 'New Freedom Park': 2088,
                   'South Street Community Garden': 2089,'Pacific Maritime Institute': 2090, 'Hobby Lobby Stores': 2091,'John C Little Sr Park': 2092, 'Spuyten Duyvil Shorefront Park': 2093,
                   'Brophy Park': 2094, 'Meghna Grocery & Halal Meat': 2095, 'Green Lake Small Craft Center': 2096, 'Pleasant Adult Family Home': 2097,'Public Garden': 2098, 'Wheel Fun Rentals Berkeley Park': 2099,
                   'Larry Bird Plaque': 2100, 'Seattle Asian Art Museum': 2101, 'ChildrenS Park': 2102, 'T Mobile Park': 2103,'Force': 2104, 'Museum of African American History': 2105, 'NB Beauty': 2106,
@@ -401,8 +401,8 @@ with tab1:
 
   tl_reverse_mapping = {v: k for k, v in tl_mapping.items()}
   tl_labels = list(tl_mapping.keys())
-  
 
+  # Collecting user inputs
   def get_DAYOFWEEK():
     DAY_OF_WEEK = st.selectbox('Select a day of week 📆', wd_mapping)
     return DAY_OF_WEEK
@@ -431,21 +431,22 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  
   if st.button('Predict Daily Sales'):
     # Make the prediction  
     input_data = [[wd_int, bn_int, ct_int, tl_int]]
     input_df = pd.DataFrame(input_data, columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION'])
     prediction = xgb_alethea.predict(input_df)   
-    # Convert output data and columns, including profit, to a dataframe
+
     output_data = [wd_int, bn_int, ct_int, tl_int, prediction[0]]
     output_df = pd.DataFrame([output_data], columns=['DAY_OF_WEEK', 'TRUCK_BRAND_NAME', 'CITY', 'LOCATION', 'DAILY_SALES'])
     predicted_sales = output_df['DAILY_SALES'].iloc[0]
     st.write('The predicted daily sales is {:.2f}.'.format(predicted_sales))
 
-  st.title('Projected Yearly Revenue💹')
-  st.write('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the United States of America, as reported in online sources.')
-  st.write('With this, we would be able to look at the projected sales increase over a span of 5 years')
+  
+  st.divider()
+  st.header('Projected Yearly Revenue 💰')
+  st.subheader('Sales in a city are significantly influenced by the level of urban activity, with population size being a key factor directly correlated to daily sales. As city population increases, it tends to drive higher daily sales due to increased consumer demand. Therefore, leveraging the city\'s population data, we can predict future sales trends, considering the average yearly population growth for each city in the **United States of America**, as reported in online sources. :blue[With this, we would be able to look at the projected sales increase over a span of 5 years]')
+  st.write('Average yearly population growth for each city 🌇')
   st.write('San Mateo: 4,600')
   st.write('Seattle: 30,000')
   st.write('New York City: 70,000')
