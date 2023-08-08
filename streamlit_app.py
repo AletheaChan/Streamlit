@@ -25,7 +25,7 @@ with tab1:
   df = pd.read_csv('df_aletheaDOW.csv')
 
   # Access the feature importance scores DataFrame from the loaded model
-  feature_importances_df = loaded_model['feature_contributions']
+  feature_importances_df = xgb_alethea['feature_contributions']
   # Display Feature Importance
   st.markdown('Feature Importance Analysis')
   if 'Weight' in feature_importances_df.columns:
