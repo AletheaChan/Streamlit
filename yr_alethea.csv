@@ -1,76 +1,76 @@
-ORDER_YEAR,CITY,TRUCK_BRAND_NAME,YEARS_REVENUE
-2022,Seattle,Tasty Tibs,30897671.0
-2022,Boston,Revenge of the Curds,35429867.0
-2022,New York City,Cheeky Greek,34944080.0
-2022,New York City,Better Off Bread,36580259.0
-2022,San Mateo,Better Off Bread,36580259.0
-2022,Seattle,Better Off Bread,36580259.0
-2022,Boston,Smoky BBQ,41736547.0
-2022,San Mateo,Guac n' Roll,27656849.5
-2022,New York City,The Mac Shack,32162346.0
-2022,San Mateo,The Mac Shack,32162346.0
-2022,New York City,Kitakata Ramen Bar,49184437.0
-2022,Seattle,The Mega Melt,14675644.0
-2022,San Mateo,Freezing Point,26404918.5
-2022,Denver,Plant Palace,27532031.0
-2022,Boston,Plant Palace,27532031.0
-2022,San Mateo,Le Coin des Crêpes,31792065.0
-2022,Denver,Nani's Kitchen,53257011.0
-2022,Seattle,Nani's Kitchen,53257011.0
-2022,Boston,Better Off Bread,36580259.0
-2022,San Mateo,Smoky BBQ,41736547.0
-2022,New York City,Guac n' Roll,27656849.5
-2022,New York City,Peking Truck,33942547.0
-2022,Seattle,Plant Palace,27532031.0
-2022,Denver,Tasty Tibs,30897671.0
-2022,Denver,Amped Up Franks,26579853.0
-2022,San Mateo,Amped Up Franks,26579853.0
-2022,New York City,Revenge of the Curds,35429867.0
-2022,Boston,Freezing Point,26404918.5
-2022,Seattle,Smoky BBQ,41736547.0
-2022,Boston,The Mac Shack,32162346.0
-2022,Denver,Kitakata Ramen Bar,49184437.0
-2022,San Mateo,Kitakata Ramen Bar,49184437.0
-2022,San Mateo,The Mega Melt,14675644.0
-2022,Denver,The Mac Shack,32162346.0
-2022,Denver,Le Coin des Crêpes,31792065.0
-2022,Boston,Amped Up Franks,26579853.0
-2022,Seattle,Amped Up Franks,26579853.0
-2022,New York City,Nani's Kitchen,53257011.0
-2022,Boston,Nani's Kitchen,53257011.0
-2022,Boston,Guac n' Roll,27656849.5
-2022,Denver,The Mega Melt,14675644.0
-2022,Denver,Revenge of the Curds,35429867.0
-2022,Seattle,Guac n' Roll,27656849.5
-2022,New York City,Plant Palace,27532031.0
-2022,Boston,Tasty Tibs,30897671.0
-2022,Denver,Cheeky Greek,34944080.0
-2022,Denver,Peking Truck,33942547.0
-2022,San Mateo,Peking Truck,33942547.0
-2022,Seattle,The Mac Shack,32162346.0
-2022,Boston,Kitakata Ramen Bar,49184437.0
-2022,New York City,Amped Up Franks,26579853.0
-2022,San Mateo,Revenge of the Curds,35429867.0
-2022,Seattle,Revenge of the Curds,35429867.0
-2022,Boston,Peking Truck,33942547.0
-2022,Denver,Better Off Bread,36580259.0
-2022,New York City,Freezing Point,26404918.5
-2022,Seattle,Freezing Point,26404918.5
-2022,New York City,Smoky BBQ,41736547.0
-2022,Seattle,Kitakata Ramen Bar,49184437.0
-2022,San Mateo,Plant Palace,27532031.0
-2022,Boston,Le Coin des Crêpes,31792065.0
-2022,New York City,Le Coin des Crêpes,31792065.0
-2022,Seattle,Le Coin des Crêpes,31792065.0
-2022,New York City,Tasty Tibs,30897671.0
-2022,New York City,The Mega Melt,14675644.0
-2022,San Mateo,Tasty Tibs,30897671.0
-2022,San Mateo,Cheeky Greek,34944080.0
-2022,Seattle,Cheeky Greek,34944080.0
-2022,Boston,Cheeky Greek,34944080.0
-2022,Seattle,Peking Truck,33942547.0
-2022,San Mateo,Nani's Kitchen,53257011.0
-2022,Denver,Freezing Point,26404918.5
-2022,Denver,Smoky BBQ,41736547.0
-2022,Denver,Guac n' Roll,27656849.5
-2022,Boston,The Mega Melt,14675644.0
+CITY,TRUCK_BRAND_NAME,CITY_POPULATION,YEARS_REVENUE
+Seattle,Tasty Tibs,737015,30897671.0
+Boston,Revenge of the Curds,675647,35429867.0
+New York City,Cheeky Greek,8804190,34944080.0
+San Mateo,Better Off Bread,105661,36580259.0
+Seattle,Better Off Bread,737015,36580259.0
+New York City,Better Off Bread,8804190,36580259.0
+Boston,Smoky BBQ,675647,41736547.0
+San Mateo,Guac n' Roll,105661,27656849.5
+New York City,The Mac Shack,8804190,32162346.0
+San Mateo,The Mac Shack,105661,32162346.0
+New York City,Kitakata Ramen Bar,8804190,49184437.0
+Seattle,The Mega Melt,737015,14675644.0
+San Mateo,Freezing Point,105661,26404918.5
+Denver,Plant Palace,715522,27532031.0
+Boston,Plant Palace,675647,27532031.0
+San Mateo,Le Coin des Crêpes,105661,31792065.0
+Denver,Nani's Kitchen,715522,53257011.0
+Seattle,Nani's Kitchen,737015,53257011.0
+Boston,Better Off Bread,675647,36580259.0
+San Mateo,Smoky BBQ,105661,41736547.0
+New York City,Guac n' Roll,8804190,27656849.5
+New York City,Peking Truck,8804190,33942547.0
+Seattle,Plant Palace,737015,27532031.0
+Denver,Tasty Tibs,715522,30897671.0
+San Mateo,Amped Up Franks,105661,26579853.0
+Denver,Amped Up Franks,715522,26579853.0
+New York City,Revenge of the Curds,8804190,35429867.0
+Boston,Freezing Point,675647,26404918.5
+Seattle,Smoky BBQ,737015,41736547.0
+Boston,The Mac Shack,675647,32162346.0
+Denver,Kitakata Ramen Bar,715522,49184437.0
+San Mateo,Kitakata Ramen Bar,105661,49184437.0
+San Mateo,The Mega Melt,105661,14675644.0
+Denver,The Mac Shack,715522,32162346.0
+Denver,Le Coin des Crêpes,715522,31792065.0
+Seattle,Amped Up Franks,737015,26579853.0
+Boston,Amped Up Franks,675647,26579853.0
+Boston,Nani's Kitchen,675647,53257011.0
+New York City,Nani's Kitchen,8804190,53257011.0
+Boston,Guac n' Roll,675647,27656849.5
+Denver,The Mega Melt,715522,14675644.0
+Denver,Revenge of the Curds,715522,35429867.0
+Seattle,Guac n' Roll,737015,27656849.5
+New York City,Plant Palace,8804190,27532031.0
+Boston,Tasty Tibs,675647,30897671.0
+Denver,Cheeky Greek,715522,34944080.0
+Denver,Peking Truck,715522,33942547.0
+San Mateo,Peking Truck,105661,33942547.0
+Seattle,The Mac Shack,737015,32162346.0
+Boston,Kitakata Ramen Bar,675647,49184437.0
+New York City,Amped Up Franks,8804190,26579853.0
+San Mateo,Revenge of the Curds,105661,35429867.0
+Seattle,Revenge of the Curds,737015,35429867.0
+Boston,Peking Truck,675647,33942547.0
+Denver,Better Off Bread,715522,36580259.0
+New York City,Freezing Point,8804190,26404918.5
+Seattle,Freezing Point,737015,26404918.5
+New York City,Smoky BBQ,8804190,41736547.0
+Seattle,Kitakata Ramen Bar,737015,49184437.0
+San Mateo,Plant Palace,105661,27532031.0
+Boston,Le Coin des Crêpes,675647,31792065.0
+New York City,Le Coin des Crêpes,8804190,31792065.0
+Seattle,Le Coin des Crêpes,737015,31792065.0
+New York City,Tasty Tibs,8804190,30897671.0
+New York City,The Mega Melt,8804190,14675644.0
+San Mateo,Tasty Tibs,105661,30897671.0
+San Mateo,Cheeky Greek,105661,34944080.0
+Seattle,Cheeky Greek,737015,34944080.0
+Boston,Cheeky Greek,675647,34944080.0
+Seattle,Peking Truck,737015,33942547.0
+San Mateo,Nani's Kitchen,105661,53257011.0
+Denver,Freezing Point,715522,26404918.5
+Denver,Smoky BBQ,715522,41736547.0
+Denver,Guac n' Roll,715522,27656849.5
+Boston,The Mega Melt,675647,14675644.0
