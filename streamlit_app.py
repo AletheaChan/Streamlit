@@ -429,7 +429,7 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  st.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
+  st.markdown('**For ease of use, stated below are some locations for each city 🗺️📍**')
   my_expander = st.expander(label='Click Me!')
   with my_expander:
     """
@@ -458,7 +458,6 @@ with tab1:
     - Inspiration Point Park (Smoky BBQ)
     - Aviation & Space Center of the Rockies (Cheeky Greek)
     """
-    clicked = st.button('Click me!')
 
   # with st.sidebar:
   #   st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
