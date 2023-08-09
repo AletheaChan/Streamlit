@@ -429,9 +429,10 @@ with tab1:
   ct_int = ct_mapping[ct_input]
   tl_int = tl_mapping[tl_input]
 
-  with st.sidebar:
-    st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
-    st.sidebar.markdown("""
+  st.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
+  my_expander = st.expander(label='Click Me!')
+  with my_expander:
+    """
     **San Mateo** 🏞️
     - Applied Strategies (Tasty Tibs)
     - American Prime Financial (Freezing Point)
@@ -456,7 +457,37 @@ with tab1:
     - Pelham College (Le Coin des Crêpes)
     - Inspiration Point Park (Smoky BBQ)
     - Aviation & Space Center of the Rockies (Cheeky Greek)
-    """)
+    """
+    clicked = st.button('Click me!')
+
+  # with st.sidebar:
+  #   st.sidebar.subheader('For ease of use, stated below are some locations for each city 🗺️📍')
+  #   st.sidebar.markdown("""
+  #   **San Mateo** 🏞️
+  #   - Applied Strategies (Tasty Tibs)
+  #   - American Prime Financial (Freezing Point)
+  #   - Remlo Apartments (Revenge of the Curds)
+    
+  #   **Seattle** ☕️
+  #   - Waterway (Tasty Tibs)
+  #   - Seattle Children's Playgarden (Guac n' Roll)
+  #   - Thorndyke Park (Better Off Bread)
+    
+  #   **New York City** 🗽
+  #   - Best Buy Shellfish (Freezing Point)
+  #   - Gateway Newstands (Kitakata Ramen Bar)
+  #   - Poseidon Bakery (Le Coin des Crêpes)
+    
+  #   **Boston** 🏙️
+  #   - Bellevue Hill Reservation (Amped Up Franks)
+  #   - Skywalk Observatory (Peking Truck)
+  #   - Stevens Triangle (Guac n' Roll)
+    
+  #   **Denver** 🏔️
+  #   - Pelham College (Le Coin des Crêpes)
+  #   - Inspiration Point Park (Smoky BBQ)
+  #   - Aviation & Space Center of the Rockies (Cheeky Greek)
+  #   """)
 
   if st.button('Predict Daily Sales'):
     # Make the prediction  
